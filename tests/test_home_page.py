@@ -31,5 +31,4 @@ class TestYandexScooterHomePage:
         yandex_scooter_home_page.wait_url_until_not_about_blank()
         current_url = yandex_scooter_home_page.current_url()
 
-        assert (Urls.yandex_search in current_url) or (Urls.dzen_domain in current_url) or (Urls.yandex_domain in current_url)
-        
+        assert Urls.dzen_domain in current_url, f"Ожидался редирект на Дзен, но открыт URL: {current_url}"

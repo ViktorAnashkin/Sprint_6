@@ -9,6 +9,7 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step("Найти элемент по локатору")
     def find_element(self, locator, time=None):
         wait_time = time if time is not None else self.DEFAULT_WAIT_TIME
         return WebDriverWait(self.driver, wait_time).until(
@@ -16,6 +17,7 @@ class BasePage:
             message=f"Не удалось найти элемент по локатору {locator}"
         )
 
+    @allure.step("Найти все элементы по локатору")
     def find_elements(self, locator, time=None):
         wait_time = time if time is not None else self.DEFAULT_WAIT_TIME
         return WebDriverWait(self.driver, wait_time).until(
